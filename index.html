@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Workout App</title>
+<style>
+body {
+    margin:0;
+    font-family: sans-serif;
+    color:white;
+    text-align:center;
+}
+
+video {
+    position:fixed;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
+
+.box {
+    margin-top:100px;
+}
+
+.btn {
+    padding:15px 30px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(90deg,#00f2ff,#4facfe);
+    color:black;
+    font-size:18px;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop>
+    <source src="/static/bg.mp4" type="video/mp4">
+</video>
+
+<div class="box">
+<h1>🔥 Workout App</h1>
+
+<a href="/login" class="btn">เข้าสู่ระบบ</a>
+<a href="/register" class="btn">สมัครสมาชิก</a>
+
+</div>
+
+</body>
+</html>
