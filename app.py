@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import sqlite3
 import os
 
 app = Flask(__name__)
+app.secret_key = "secret123"  # สำคัญมาก
 
-# ✅ สร้าง database
+# สร้าง DB
 def init_db():
     conn = sqlite3.connect("users.db")
     c = conn.cursor()
@@ -20,12 +21,12 @@ def init_db():
 
 init_db()
 
-# 🏠 หน้าแรก
+# หน้าแรก
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# 🔐 สมัคร
+# สมัคร
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -38,11 +39,11 @@ def register():
         conn.commit()
         conn.close()
 
-        return "✅ สมัครสำเร็จ!"
+        return redirect("/login")
 
     return render_template("register.html")
 
-# 🔑 login
+# login
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -56,18 +57,37 @@ def login():
         conn.close()
 
         if result:
-            return redirect("/workout")
+            session["user"] = user   # 🔥 จำว่า login แล้ว
+            return redirect("/dashboard")
         else:
             return "❌ ผิด"
 
     return render_template("login.html")
 
-# 💪 workout
+# 🔥 Dashboard
+@app.route("/dashboard")
+def dashboard():
+    if "user" not in session:
+        return redirect("/login")
+
+    user = session["user"]
+    return render_template("dashboard.html", user=user)
+
+# logout
+@app.route("/logout")
+def logout():
+    session.pop("user", None)
+    return redirect("/")
+
+# workout
 @app.route("/workout")
 def workout():
+    if "user" not in session:
+        return redirect("/login")
+
     return "🔥 โปรแกรม: Push-up 20 | Squat 30 | Plank 60 วิ"
 
-# 🌍 run
+# run
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
