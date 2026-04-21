@@ -49,6 +49,13 @@ def login():
     return render_template("login.html")
 
 # ---------- DASHBOARD ----------
+@app.route("/admin")
+def admin():
+    if "user" not in session:
+        return redirect("/login")
+
+    users = User.query.all()
+    return render_template("admin.html", users=users)
 @app.route("/dashboard")
 def dashboard():
     if "user" not in session:
