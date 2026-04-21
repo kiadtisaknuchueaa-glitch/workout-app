@@ -1,16 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
+    <meta charset="UTF-8">
     <title>Workout App</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            width: 400px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: #00d4ff;
+        }
+
+        p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+        }
+
+        .register {
+            background: linear-gradient(90deg, #a855f7, #6366f1);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>💪 Workout App</h1>
-        <p>ยินดีต้อนรับ!</p>
-        <a href="/login">เข้าสู่ระบบ</a>
+
+<div class="container">
+    <div class="logo">💪</div>
+
+    <h1>WORKOUT <span>APP</span></h1>
+
+    <p>ยินดีต้อนรับ!<br>เข้าสู่ระบบเพื่อเริ่มออกกำลังกาย</p>
+
+    <form action="/login">
+        <button class="btn login">🔒 เข้าสู่ระบบ</button>
+    </form>
+
+    <form action="/register">
+        <button class="btn register">👤 สมัครสมาชิก</button>
+    </form>
+
+    <div class="footer">
+        Stronger Every Day 💙
     </div>
+</div>
+
 </body>
 </html>
-<a href="/register">สมัครสมาชิก</a><br>
-<a href="/login">เข้าสู่ระบบ</a>
