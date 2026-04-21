@@ -1,20 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Dashboard</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+}
+
+/* Header */
+.header {
+    padding:15px;
+    font-size:22px;
+    background:#1e293b;
+    text-align:center;
+}
+
+/* Card */
+.card {
+    background:#1e293b;
+    margin:12px;
+    padding:15px;
+    border-radius:15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Button */
+button {
+    padding:12px;
+    width:100%;
+    border:none;
+    border-radius:12px;
+    background:#38bdf8;
+    color:white;
+    font-size:16px;
+    margin-top:10px;
+}
+
+/* Grid */
+.grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+}
+
+.stat {
+    background:#334155;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+</style>
 </head>
+
 <body>
-    <h1>👋 สวัสดี {{ user }}</h1>
 
-    <h2>💪 โปรแกรมวันนี้</h2>
-    <ul>
-        <li>Push-up 20 ครั้ง</li>
-        <li>Squat 30 ครั้ง</li>
-        <li>Plank 60 วินาที</li>
-    </ul>
+<div class="header">
+🏋️ Workout App
+</div>
 
-    <br>
-    <a href="/workout">ไปหน้า Workout</a><br>
-    <a href="/logout">ออกจากระบบ</a>
+<div class="card">
+<h2>👋 สวัสดี {{ user }}</h2>
+<p>พร้อมลุยวันนี้ไหม? 🔥</p>
+</div>
+
+<div class="card">
+<h3>📊 สถิติวันนี้</h3>
+
+<div class="grid">
+    <div class="stat">Push-up<br><b>20</b></div>
+    <div class="stat">Squat<br><b>30</b></div>
+    <div class="stat">Plank<br><b>60s</b></div>
+    <div class="stat">Run<br><b>2km</b></div>
+</div>
+
+</div>
+
+<div class="card">
+<h3>💪 โปรแกรมวันนี้</h3>
+<ul>
+    <li>Push-up 20 ครั้ง</li>
+    <li>Squat 30 ครั้ง</li>
+    <li>Plank 60 วินาที</li>
+</ul>
+
+<button onclick="location.href='/workout'">
+เริ่มฝึก
+</button>
+</div>
+
+<div class="card">
+<button onclick="location.href='/logout'">
+🚪 ออกจากระบบ
+</button>
+</div>
+
 </body>
 </html>
