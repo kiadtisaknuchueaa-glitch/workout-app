@@ -1,109 +1,77 @@
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Workout App</title>
+<style>
+body {
+    margin:0;
+    color:white;
+    font-family:sans-serif;
+}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+video {
+    position:fixed;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
 
-        body {
-            height: 100vh;
-            background: linear-gradient(135deg, #0f172a, #020617);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
+.overlay {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+}
 
-        .container {
-            width: 400px;
-            padding: 40px;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 0 40px rgba(0,0,0,0.5);
-            text-align: center;
-        }
+.box {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
 
-        .logo {
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
+.glow {
+    font-size:40px;
+    animation: glow 2s infinite alternate;
+}
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+@keyframes glow {
+    from { text-shadow:0 0 10px #00d4ff; }
+    to { text-shadow:0 0 30px #00d4ff; }
+}
 
-        h1 span {
-            color: #00d4ff;
-        }
+button {
+    padding:15px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+}
 
-        p {
-            color: #aaa;
-            margin-bottom: 30px;
-        }
+.login {
+    background:#00c6ff;
+}
 
-        .btn {
-            width: 100%;
-            padding: 15px;
-            margin-top: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .login {
-            background: linear-gradient(90deg, #00c6ff, #0072ff);
-            color: white;
-        }
-
-        .register {
-            background: linear-gradient(90deg, #a855f7, #6366f1);
-            color: white;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
-        }
-
-        .footer {
-            margin-top: 25px;
-            font-size: 12px;
-            color: #777;
-        }
-    </style>
+.register {
+    background:#a855f7;
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-    <div class="logo">💪</div>
+<video autoplay muted loop>
+    <source src="/static/bg.mp4">
+</video>
 
-    <h1>WORKOUT <span>APP</span></h1>
+<div class="overlay"></div>
 
-    <p>ยินดีต้อนรับ!<br>เข้าสู่ระบบเพื่อเริ่มออกกำลังกาย</p>
+<div class="box">
+    <h1 class="glow">WORKOUT APP</h1>
 
-    <form action="/login">
-        <button class="btn login">🔒 เข้าสู่ระบบ</button>
-    </form>
-
-    <form action="/register">
-        <button class="btn register">👤 สมัครสมาชิก</button>
-    </form>
-
-    <div class="footer">
-        Stronger Every Day 💙
-    </div>
+    <a href="/login"><button class="login">เข้าสู่ระบบ</button></a>
+    <a href="/register"><button class="register">สมัครสมาชิก</button></a>
 </div>
 
 </body>

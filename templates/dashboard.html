@@ -1,67 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard</title>
 
 <style>
 body {
-    margin:0;
-    font-family: Arial;
-    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color:white;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
 }
 
 /* Header */
 .header {
-    padding:20px;
-    font-size:24px;
-    text-align:center;
-    font-weight:bold;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
 }
 
-/* Glass Card */
+/* Card */
 .card {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(15px);
-    margin:15px;
-    padding:20px;
-    border-radius:20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.08);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0,255,255,0.2);
+    transition: 0.3s;
 }
 
-/* Grid */
-.grid {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap:12px;
+.card:hover {
+    transform: scale(1.05);
 }
 
-/* Stat Box */
-.stat {
-    background: rgba(255,255,255,0.1);
-    padding:15px;
-    border-radius:15px;
-    text-align:center;
+/* Progress Circle */
+.circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(#00f2ff 70%, #222 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.circle span {
+    font-size: 24px;
 }
 
 /* Button */
-button {
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:15px;
-    font-size:16px;
-    color:white;
-    margin-top:10px;
-    background: linear-gradient(45deg,#00c6ff,#0072ff);
+.btn {
+    display: block;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    background: linear-gradient(90deg, #00f2ff, #4facfe);
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 
-/* Animation */
-.card:hover {
-    transform: scale(1.02);
-    transition: 0.3s;
+/* Glow Animation */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #00f2ff; }
+    50% { box-shadow: 0 0 20px #00f2ff; }
+    100% { box-shadow: 0 0 5px #00f2ff; }
+}
+
+.glow {
+    animation: glow 2s infinite;
 }
 </style>
 </head>
@@ -69,44 +80,27 @@ button {
 <body>
 
 <div class="header">
-🏋️ Workout App
+🔥 Dashboard
 </div>
 
-<div class="card">
-<h2>👋 {{ user }}</h2>
-<p>🔥 วันนี้เราจะโหดแค่ไหน?</p>
+<div class="card glow">
+<h3>🔥 วันนี้ของคุณ</h3>
+
+<div class="circle">
+<span>70%</span>
 </div>
 
-<div class="card">
-<h3>📊 สถิติ</h3>
-
-<div class="grid">
-    <div class="stat">Push-up<br><b>20</b></div>
-    <div class="stat">Squat<br><b>30</b></div>
-    <div class="stat">Plank<br><b>60s</b></div>
-    <div class="stat">Run<br><b>2km</b></div>
-</div>
-
+<p style="text-align:center;">เป้าหมายการออกกำลังกาย</p>
 </div>
 
 <div class="card">
 <h3>💪 โปรแกรมวันนี้</h3>
-<ul>
-    <li>Push-up 20 ครั้ง</li>
-    <li>Squat 30 ครั้ง</li>
-    <li>Plank 60 วินาที</li>
-</ul>
-
-<button onclick="location.href='/workout'">
-🚀 เริ่มฝึก
-</button>
+<p>Push-up 20 ครั้ง</p>
+<p>Pull-up 10 ครั้ง</p>
+<p>วิ่ง 2 กม.</p>
 </div>
 
-<div class="card">
-<button onclick="location.href='/logout'">
-🚪 Logout
-</button>
-</div>
+<a href="/" class="btn">ออกจากระบบ</a>
 
 </body>
 </html>
