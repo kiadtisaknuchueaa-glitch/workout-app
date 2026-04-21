@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 app.secret_key = "secret123"
@@ -36,12 +37,10 @@ def register():
     return render_template("register.html")
 
 # ---------- LOGIN ----------
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login", methods=["GET","POST"])
 def login():
     if request.method == "POST":
-        user = User.query.filter_by(
-            username=request.form["username"]
-        ).first()
+        user = User.query.filter_by(username=request.form["username"]).first()
 
         if user and user.password == request.form["password"]:
             session["user"] = user.username
@@ -56,7 +55,6 @@ def dashboard():
         return redirect("/login")
 
     return render_template("dashboard.html", user=session["user"])
-
 # ---------- LOGOUT ----------
 @app.route("/logout")
 def logout():
